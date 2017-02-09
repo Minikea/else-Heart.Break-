@@ -1,0 +1,9 @@
+
+Say("Extracting...")
+
+string name = GetName()
+Say(name)
+void Copy(c)
+  CopyToClipboard(c)
+end
+  
