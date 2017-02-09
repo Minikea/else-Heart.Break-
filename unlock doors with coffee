@@ -1,0 +1,19 @@
+Drunkenness(-0)
+Smelliness(-0)
+#Connect to computer which can do almost everything in game
+var mf = Connect("MainFrame")
+var hu = Connect("Hugin")
+#Which room am I in?
+var room = GetRoom()
+
+#What is there in the room?
+var things = mf.GetThingsInRoom(room)
+
+#Let's loop to find the door around
+var dt
+loop thing in things
+  if mf.GetTypeOfThing(thing)=="door"
+    #if a door was found, unlock it
+    hu.Unlock(thing)
+  end
+end
