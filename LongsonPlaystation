@@ -1,0 +1,68 @@
+void MainMenu()
+  ClearText()
+  Print("Welcome to HackMud")
+  Print("-----------------------")
+  Sleep(1)
+  Print("1. check for function")
+  Print("2. Sell Soda")
+  Print("3. todo")
+  Print("4. Exit")
+  PlaySound("Powerup 4")
+    string command = Input("> ")
+    if command == "1"
+        PlaySound("Blip 3")
+       CheckObject()
+    else if command == "2"
+        PlaySound("Blip 3")
+        SellSoda()
+    else if command == "3"
+        PlaySound("Blip 3")
+        
+    else if command == "4"
+        PlaySound("Shoot 4")
+        ClearText()
+        break
+    else 
+      Print("erreur de saisie: " + command)
+      Input("Press any key.")
+    end
+    MainMenu()
+end
+
+
+# FUNCTIONS
+void SellSoda()
+  ClearText() 
+  Print("Sell a Soda(tm)") 
+  Print("-------------------") 
+  Print("") 
+  Print("How many Soda's you want to sell?") 
+  number numberOfSodas = Input("") 
+  string name = GetUser()
+  #connect to Wellspringer server 
+  var wellspring = Connect("Wellspringer") 
+  wellspring.RegisterSeller(name, numberOfSodas) 
+  Print("") 
+  Print("The amount of " + numberOfSodas + " Soda's has been registered.") 
+  Input("Please press a key.") 
+end
+ 
+void CheckObject()
+    #clear screen again 
+    ClearText() 
+    Print("Please type in the name of the object.") 
+    #save users input in var oName 
+    var oName = Input("") 
+    ClearText() 
+    Print("Which function you search for?") 
+    var oFunc = Input("") 
+    #connect to the object 
+    var cName = Connect(oName) 
+    #check if object has the function, the user searches for 
+    if(cName.HasFunction(oFunc)) 
+      Print("The object has the function " + oFunc) 
+    else 
+      Print("The object doesn't have a function called " + oFunc) 
+    end
+end
+MainMenu()
