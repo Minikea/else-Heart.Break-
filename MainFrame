@@ -1,0 +1,20 @@
+
+ClearText()
+Print(Name())
+Input("")
+
+var names = GetPeople()
+loop name in names
+    Print(name+" "+GetRoom(name))
+end
+loop
+	var name = Input("Enter name to look up: ")
+ if GetRoom(name) != ""
+  	Print(GetPosition(name))
+ else
+   array i = GetThingsInRoom(name)
+   loop y in i
+       Print(y)
+   end
+ end
+end
